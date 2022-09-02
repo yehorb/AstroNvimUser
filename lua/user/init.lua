@@ -45,7 +45,7 @@ local config = {
   plugins = {
     init = {
       ["akinsho/bufferline.nvim"] = { disable = true },
-      ["goolord/alpha-nvim"] = { disable = true},
+      ["goolord/alpha-nvim"] = { disable = true },
       { "arcticicestudio/nord-vim" },
       { "tpope/vim-dadbod" },
       { "tpope/vim-surround" },
@@ -66,6 +66,13 @@ local config = {
               return vim.api.nvim_list_bufs()
             end,
           },
+        },
+      },
+    },
+    ["neo-tree"] = {
+      filesystem = {
+        filtered_items = {
+          visible = true,
         },
       },
     },
