@@ -50,11 +50,11 @@ local config = {
     cmp = {
       sources = {
         {
-          name = 'buffer',
+          name = "buffer",
           option = {
             get_bufnrs = function()
               return vim.api.nvim_list_bufs()
-            end
+            end,
           },
         },
       },
@@ -62,7 +62,7 @@ local config = {
   },
   polish = function()
     autocommands()
-  end
+  end,
 }
 
 return config
