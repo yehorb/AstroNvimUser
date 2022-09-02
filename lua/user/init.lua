@@ -8,6 +8,13 @@ local function autocommands()
   })
 end
 
+local function termguicolors()
+  if vim.fn.has "termguicolors" then
+    return true
+  end
+  return nil
+end
+
 local config = {
   colorscheme = "nord",
   options = {
@@ -19,6 +26,7 @@ local config = {
       list = true,
       listchars = { eol = "¶", tab = "→·", trail = "·", nbsp = "+" },
       showbreak = "> ",
+      termguicolors = termguicolors(),
     },
     g = {
       mapleader = "\\",
