@@ -1,3 +1,11 @@
+local function shell()
+  local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+  if is_windows then
+    return "pwsh.exe"
+  end
+  return nil
+end
+
 local function termguicolors()
   if vim.fn.has "termguicolors" then
     return true
@@ -13,6 +21,7 @@ local options = {
     linebreak = true,
     list = true,
     listchars = { eol = "¶", tab = "→·", trail = "·", nbsp = "+" },
+    shell = shell(),
     showbreak = "> ",
     termguicolors = termguicolors(),
   },
