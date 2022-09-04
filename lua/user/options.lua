@@ -18,6 +18,7 @@ local options = {
     scrolloff = 4,
     showbreak = "> ",
     termguicolors = termguicolors(),
+    wrap = true,
   }, shell.shell()),
   g = {
     mapleader = "\\",
