@@ -1,8 +1,8 @@
-local utils = {}
+local shell = {}
 
 local is_windows = vim.loop.os_uname().version:match "Windows"
 
-function utils.shell()
+function shell.shell()
   if not is_windows then
     return {}
   end
@@ -16,4 +16,4 @@ function utils.shell()
   }
 end
 
-return utils
+return shell

@@ -1,4 +1,4 @@
-local utils = require "user.utils"
+local shell = require "user.shell"
 
 local function termguicolors()
   if vim.fn.has "termguicolors" then
@@ -17,7 +17,7 @@ local options = {
     listchars = { eol = "¶", tab = "→·", trail = "·", nbsp = "+" },
     showbreak = "> ",
     termguicolors = termguicolors(),
-  }, utils.shell()),
+  }, shell.shell()),
   g = {
     mapleader = "\\",
   },
