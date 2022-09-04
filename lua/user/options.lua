@@ -8,18 +8,16 @@ local function termguicolors()
 end
 
 local options = {
-  opt = {
+  opt = vim.tbl_extend("force", {
     fileencoding = "utf-8",
     fileformat = "unix",
     fileformats = { "unix", "dos" },
     linebreak = true,
     list = true,
     listchars = { eol = "¶", tab = "→·", trail = "·", nbsp = "+" },
-    shell = utils.shell(),
-    shellcmdflag = utils.shellcmdflag(),
     showbreak = "> ",
     termguicolors = termguicolors(),
-  },
+  }, utils.shell()),
   g = {
     mapleader = "\\",
   },
