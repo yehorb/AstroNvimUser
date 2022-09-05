@@ -11,6 +11,7 @@ local function quickfix_mapping(args)
   local options = { buffer = args.buf }
   vim.keymap.set("n", "j", "j<Cr><Cmd>copen<Cr>", options)
   vim.keymap.set("n", "k", "k<Cr><Cmd>copen<Cr>", options)
+  vim.keymap.set("n", "<Cr>", "<Cr><Cmd>cclose<Cr>", options)
 end
 
 vim.api.nvim_create_autocmd("BufReadPost", {
