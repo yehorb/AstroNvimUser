@@ -1,5 +1,4 @@
 local plugins = {
-  ["NvChad/nvim-colorizer.lua"] = {  disable = true },
   ["akinsho/bufferline.nvim"] = { disable = true },
   ["feline-nvim/feline.nvim"] = { disable = true },
   ["goolord/alpha-nvim"] = { disable = true },
