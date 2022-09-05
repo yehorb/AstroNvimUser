@@ -4,7 +4,6 @@ local mappings = {
   },
   v = {
     ["p"] = '"_dP',
-    ["<Leader>bb"] = ":DB<Enter>",
   },
 }
 
