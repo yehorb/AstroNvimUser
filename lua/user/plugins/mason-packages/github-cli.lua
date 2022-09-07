@@ -6,23 +6,23 @@ local github = require "mason-core.managers.github"
 local coalesce, when = _.coalesce, _.when
 
 return Pkg.new {
-  name = "lazygit",
-  desc = [[simple terminal UI for git commands]],
-  homepage = "https://github.com/jesseduffield/lazygit",
-  languages = { Pkg.Lang.Git },
+  name = "GitHub CLI",
+  desc = [[gh is GitHub on the command line.]],
+  homepage = "https://github.com/cli/cli",
+  languages = { Pkg.Lang.Shell },
   categories = { Pkg.Cat.Tool },
   ---@async
   ---@param ctx InstallContext
   install = function(ctx)
     github
       .unzip_release_file({
-        repo = "jesseduffield/lazygit",
+        repo = "cli/cli",
         asset_file = function(version)
-          local target = coalesce(when(platform.is.win_x64, "lazygit_%s_Windows_x86_64.zip"))
+          local target = coalesce(when(platform.is.win_x64, "gh_%s_windows_amd64.zip"))
           return target and target:format(version:gsub("^v", ""))
         end,
       })
       .with_receipt()
-    ctx:link_bin("lazygit", platform.is.win and "lazygit.exe" or "lazygit")
+    ctx:link_bin("gh", platform.is.win and "bin/gh.exe" or "bin/gh")
   end,
 }
