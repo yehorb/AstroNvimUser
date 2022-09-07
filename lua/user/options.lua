@@ -16,7 +16,7 @@ local options = {
     list = true,
     listchars = { eol = "¶", tab = "→·", trail = "·", nbsp = "+" },
     scrolloff = 4,
-    showbreak = "> ",
+    showbreak = ">> ",
     termguicolors = termguicolors(),
     wrap = true,
   }, shell.shell()),
