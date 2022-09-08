@@ -10,7 +10,7 @@ return Pkg.new {
   desc = [[simple terminal UI for git commands]],
   homepage = "https://github.com/jesseduffield/lazygit",
   languages = { Pkg.Lang.Git },
-  categories = { Pkg.Cat.Tool },
+  categories = { "Tool" },
   ---@async
   ---@param ctx InstallContext
   install = function(ctx)

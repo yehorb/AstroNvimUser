@@ -6,11 +6,11 @@ local github = require "mason-core.managers.github"
 local coalesce, when = _.coalesce, _.when
 
 return Pkg.new {
-  name = "GitHub CLI",
+  name = "github-cli",
   desc = [[gh is GitHub on the command line.]],
   homepage = "https://github.com/cli/cli",
   languages = { Pkg.Lang.Shell },
-  categories = { Pkg.Cat.Tool },
+  categories = { "Tool" },
   ---@async
   ---@param ctx InstallContext
   install = function(ctx)
