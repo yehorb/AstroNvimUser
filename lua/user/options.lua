@@ -15,6 +15,7 @@ local options = {
     linebreak = true,
     list = true,
     listchars = { eol = "¶", tab = "→·", trail = "·", nbsp = "+" },
+    path = vim.opt.path + { "**" },
     scrolloff = 4,
     showbreak = ">> ",
     termguicolors = termguicolors(),
