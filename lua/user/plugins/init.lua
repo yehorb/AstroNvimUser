@@ -3,6 +3,7 @@ local plugins = {
   ["feline-nvim/feline.nvim"] = { disable = true },
   ["goolord/alpha-nvim"] = { disable = true },
   { "arcticicestudio/nord-vim" },
+  { "editorconfig/editorconfig-vim" },
   { "tpope/vim-repeat" },
   {
     "tpope/vim-dadbod",
