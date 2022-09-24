@@ -4,6 +4,7 @@ local plugins = {
   ["goolord/alpha-nvim"] = { disable = true },
   { "arcticicestudio/nord-vim" },
   { "editorconfig/editorconfig-vim" },
+  ["nvim-neo-tree/neo-tree.nvim"] = { disable = true },
   { "tpope/vim-repeat" },
   {
     "tpope/vim-dadbod",
@@ -23,6 +24,7 @@ local plugins = {
     ft = "sql",
   },
   { "tpope/vim-surround" },
+  { "tpope/vim-vinegar" },
 }
 
 return plugins
