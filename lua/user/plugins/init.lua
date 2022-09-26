@@ -11,6 +11,10 @@ local plugins = {
   { "tpope/vim-surround" },
   { "tpope/vim-vinegar" },
 
+  -- treesitter
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
+  { "nvim-treesitter/playground" },
+
   { "arcticicestudio/nord-vim" },
   { "editorconfig/editorconfig-vim" },
 }
