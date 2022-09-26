@@ -9,8 +9,7 @@ local treesitter = {
     "dockerfile",
     "dot",
     "gitattributes",
-    -- currently does not work - https://github.com/nvim-treesitter/nvim-treesitter/issues/3316
-    -- "gitignore",
+    "gitignore",
     "go",
     "graphql",
     "hcl",

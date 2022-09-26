@@ -5,8 +5,35 @@ local plugins = {
   ["goolord/alpha-nvim"] = { disable = true },
   ["nvim-neo-tree/neo-tree.nvim"] = { disable = true },
 
+  -- local
+  {
+    string.format("%s/%s", vim.fn.expand "$HOME", "Projects/nvim/nvim-treesitter"),
+    as = "nvim-treesitter",
+    run = ":TSUpdate",
+    event = { "BufRead", "BufNewFile" },
+    cmd = {
+      "TSInstall",
+      "TSInstallInfo",
+      "TSInstallSync",
+      "TSUninstall",
+      "TSUpdate",
+      "TSUpdateSync",
+      "TSDisableAll",
+      "TSEnableAll",
+    },
+    config = function()
+      require "configs.treesitter"
+    end,
+  },
+
   -- tpope
-  { "tpope/vim-dadbod", setup = function() require "user.plugins.vim-dadbod" end, ft = "sql" },
+  {
+    "tpope/vim-dadbod",
+    setup = function()
+      require "user.plugins.vim-dadbod"
+    end,
+    ft = "sql",
+  },
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
   { "tpope/vim-vinegar" },
@@ -19,4 +46,7 @@ local plugins = {
   { "editorconfig/editorconfig-vim" },
 }
 
-return plugins
+return function(default)
+  default["nvim-treesitter/nvim-treesitter"] = nil
+  return vim.tbl_deep_extend("force", default, plugins)
+end
