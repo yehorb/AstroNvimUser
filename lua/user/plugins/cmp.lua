@@ -6,7 +6,7 @@ local function get_bufnrs()
   return vim.tbl_keys(bufs)
 end
 
-local cmp = {
+local setup = {
   sources = {
     {
       name = "buffer",
@@ -17,4 +17,4 @@ local cmp = {
   },
 }
 
-return cmp
+return setup

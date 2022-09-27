@@ -1,4 +1,4 @@
-local treesitter = {
+local setup = {
   ensure_installed = {
     "bash",
     "c",
@@ -31,4 +31,4 @@ local treesitter = {
   },
 }
 
-return treesitter
+return setup

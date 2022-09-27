@@ -1,4 +1,4 @@
-local mason_lspconfig = {
+local setup = {
   automatic_installation = false,
   ensure_installed = {
     "pyright",
@@ -7,4 +7,4 @@ local mason_lspconfig = {
   },
 }
 
-return mason_lspconfig
+return setup

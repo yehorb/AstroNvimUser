@@ -3,8 +3,8 @@ if not status_ok then
   return {}
 end
 
-local mason = {
+local setup = {
   install_root_dir = path.concat { vim.fn.expand "$HOME", "Tools", "mason" },
 }
 
-return mason
+return setup
