@@ -17,6 +17,6 @@ end
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = "user",
   pattern = "quickfix",
-  desc = "jk in quickfix list should jump to location in buffer",
+  desc = "jk in quickfix list should jump to location in buffer.",
   callback = quickfix_mapping,
 })
