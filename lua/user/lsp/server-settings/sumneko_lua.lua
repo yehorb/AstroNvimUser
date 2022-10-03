@@ -4,6 +4,9 @@ local settings = {
       diagnostics = {
         globals = { "astronvim", "vim" },
       },
+      runtime = {
+        version = "LuaJIT",
+      },
     },
   },
 }
