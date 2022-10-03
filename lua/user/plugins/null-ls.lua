@@ -12,7 +12,10 @@ end
 
 local setup = {
   on_attach = function(client, bufnr)
-    if client.resolved_capabilities.document_formatting then
+    if
+      vim.fn.has "nvim-0.8.0" and client.server_capabilities["textDocument/formatting"]
+      or client.resolved_capabilities.document_formatting
+    then
       format_before_save(bufnr)
     end
   end,
