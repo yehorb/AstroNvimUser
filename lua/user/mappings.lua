@@ -1,5 +1,6 @@
 local mappings = {
   [""] = {
+    ["<Leader>bd"] = '<Cmd>write | %bdelete | edit # | bdelete # | normal `"<CR>',
     ["Y"] = '"*y',
   },
   n = {
