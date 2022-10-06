@@ -9,7 +9,6 @@ local setup = {
     "dockerfile",
     "dot",
     "gitattributes",
-    "gitignore",
     "go",
     "graphql",
     "hcl",
