@@ -18,8 +18,8 @@ local plugins = {
   { "tpope/vim-vinegar" },
 
   -- treesitter
-  { "nvim-treesitter/nvim-treesitter-textobjects" },
-  { "nvim-treesitter/playground" },
+  { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
+  { "nvim-treesitter/playground", after = "nvim-treesitter" },
 
   { "arcticicestudio/nord-vim" },
   { "editorconfig/editorconfig-vim" },
