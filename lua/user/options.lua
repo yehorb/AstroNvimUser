@@ -1,8 +1,8 @@
+local platform = require "user.platform"
+
 return {
-  opt = {
+  opt = vim.tbl_extend("force", {
     fileencoding = "utf-8",
-    fileformat = "unix",
-    fileformats = { "unix", "dos" },
     linebreak = true,
     list = true,
     listchars = { eol = "¶", tab = "→·", trail = "·", nbsp = "+" },
@@ -10,7 +10,7 @@ return {
     scrolloff = 4,
     showbreak = ">> ",
     wrap = true,
-  },
+  }, platform.shell(), platform.fileformat()),
   g = {
     mapleader = "\\",
   },
