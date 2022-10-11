@@ -4,5 +4,10 @@ return {
     -- lua
     "selene",
     "stylua",
+    -- python
+    "black",
+    "flake8",
+    "isort",
+    "mypy",
   },
 }
