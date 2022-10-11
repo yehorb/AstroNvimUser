@@ -1,12 +1,6 @@
 return {
   -- tpope
-  {
-    "tpope/vim-dadbod",
-    setup = function()
-      require "user.plugins.vim-dadbod"
-    end,
-    ft = "sql",
-  },
+  ["tpope/vim-dadbod"] = require "user.plugins.vim-dadbod",
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
   { "tpope/vim-vinegar" },
