@@ -1,10 +1,8 @@
-local setup = {
-  automatic_installation = false,
+return {
+  automatic_installation = true,
   ensure_installed = {
     "pyright",
     "sumneko_lua",
     "terraformls",
   },
 }
-
-return setup

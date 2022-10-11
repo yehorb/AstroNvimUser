@@ -22,12 +22,8 @@ return Pkg.new {
       })
       .with_receipt()
     platform.when {
-      mac = function() end,
-      linux = function() end,
-      unix = function() end,
       win = function()
         ctx:link_bin("broot", "x86_64-pc-windows-gnu/broot.exe")
-        ctx:link_bin("br", "x86_64-pc-windows-gnu/broot.exe")
       end,
     }
   end,

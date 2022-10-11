@@ -1,3 +1,1 @@
-local colorsheme = "nord"
-
-return colorsheme
+return "nord"

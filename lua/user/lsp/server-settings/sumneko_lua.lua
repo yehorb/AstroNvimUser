@@ -1,4 +1,4 @@
-local settings = {
+return {
   settings = {
     Lua = {
       diagnostics = {
@@ -10,5 +10,3 @@ local settings = {
     },
   },
 }
-
-return settings

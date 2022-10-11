@@ -1,11 +1,8 @@
-local shell = {}
+local Platform = require "user.platform.core"
 
-local is_windows = vim.loop.os_uname().version:match "Windows"
+local Windows = Platform:new()
 
-function shell.shell()
-  if not is_windows then
-    return {}
-  end
+function Windows.shell()
   return {
     shell = vim.fn.executable "pwsh" and "pwsh" or "powershell",
     shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
@@ -16,4 +13,11 @@ function shell.shell()
   }
 end
 
-return shell
+function Windows.fileformat()
+  return {
+    fileformat = "unix",
+    fileformats = { "unix", "dos" },
+  }
+end
+
+return Windows

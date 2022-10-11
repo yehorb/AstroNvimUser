@@ -3,7 +3,7 @@ if not status_ok then
   return {}
 end
 
-local setup = {
+return {
   mypy = function()
     local source = null_ls.builtins.diagnostics.mypy.with {
       extra_args = { "--python-executable", vim.fn.exepath "python" },
@@ -17,5 +17,3 @@ local setup = {
     null_ls.register(source)
   end,
 }
-
-return setup

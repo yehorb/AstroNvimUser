@@ -1,24 +1,11 @@
-local setup = {
+return {
   ensure_installed = {
-    "bash",
-    "c",
-    "cmake",
-    "cpp",
-    "css",
-    "cuda",
     "dockerfile",
     "dot",
-    "gitattributes",
     "go",
-    "graphql",
     "hcl",
-    "html",
-    "http",
-    "java",
     "javascript",
     "json",
-    "llvm",
-    "lua",
     "markdown",
     "python",
     "query",
@@ -29,5 +16,3 @@ local setup = {
     "yaml",
   },
 }
-
-return setup

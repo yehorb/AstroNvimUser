@@ -1,5 +1,5 @@
 return function()
-  require "user.autocommands"
+  require "user.polish.autocommands"
 
   -- enable netrw
   -- using astronvim.vim_opts { g = { ... } } does not work
