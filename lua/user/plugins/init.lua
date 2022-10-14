@@ -1,4 +1,4 @@
-return {
+local M = {
   -- tpope
   ["tpope/vim-dadbod"] = require "user.plugins.vim-dadbod.plugin",
   { "tpope/vim-repeat" },
@@ -23,3 +23,11 @@ return {
   ["stevearc/dressing.nvim"] = { disable = true },
   [("nvim-telescope/telescope-%s-native.nvim"):format(vim.fn.has "win32" == 1 and "fzy" or "fzf")] = { disable = true },
 }
+
+return function(default)
+  local ts = default["nvim-treesitter/nvim-treesitter"]
+  default["nvim-treesitter/nvim-treesitter"] = nil
+  local tspath = string.format("%s/Projects/nvim/nvim-treesitter", vim.fn.expand "$USERPROFILE")
+  M[tspath] = ts
+  return vim.tbl_deep_extend("force", default, M)
+end
