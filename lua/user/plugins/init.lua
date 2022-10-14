@@ -10,7 +10,7 @@ return {
   { "nvim-treesitter/playground", after = "nvim-treesitter" },
 
   ["WhoIsSethDaniel/mason-tool-installer.nvim"] = require "user.plugins.mason-tool-installer.plugin",
-  ["folke/lua-dev.nvim"] = require "user.plugins.lua-dev.plugin",
+  ["folke/neodev.nvim"] = require "user.plugins.neodev.plugin",
   { "arcticicestudio/nord-vim" },
   { "editorconfig/editorconfig-vim" },
 
