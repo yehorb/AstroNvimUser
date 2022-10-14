@@ -1,6 +1,6 @@
 return {
   -- tpope
-  ["tpope/vim-dadbod"] = require "user.plugins.vim-dadbod",
+  ["tpope/vim-dadbod"] = require "user.plugins.vim-dadbod.plugin",
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
   { "tpope/vim-vinegar" },
@@ -9,7 +9,7 @@ return {
   { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
   { "nvim-treesitter/playground", after = "nvim-treesitter" },
 
-  ["WhoIsSethDaniel/mason-tool-installer.nvim"] = require "user.plugins.mason-tool-installer",
+  ["WhoIsSethDaniel/mason-tool-installer.nvim"] = require "user.plugins.mason-tool-installer.plugin",
   ["folke/lua-dev.nvim"] = require "user.plugins.lua-dev.plugin",
   { "arcticicestudio/nord-vim" },
   { "editorconfig/editorconfig-vim" },
