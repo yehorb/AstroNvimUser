@@ -10,31 +10,23 @@ local Platform = {
 }
 
 function Platform.is_unix()
-  return (
-    Platform.is.linux == 1
-    or Platform.is.mac == 1
-    or Platform.is.unix == 1
-  )
+  return (Platform.is.linux == 1 or Platform.is.mac == 1 or Platform.is.unix == 1)
 end
 
 function Platform.is_win()
-  return (
-    Platform.is.win == 1
-    or Platform.is.win32 == 1
-    or Platform.is.win64 == 1
-  )
+  return (Platform.is.win == 1 or Platform.is.win32 == 1 or Platform.is.win64 == 1)
 end
 
 function Platform.new(self)
-  return setmetatable({}, {__index = self})
+  return setmetatable({}, { __index = self })
 end
 
 function Platform.shell()
-  error("not implemented")
+  error "not implemented"
 end
 
 function Platform.fileformat()
-  error("not implemented")
+  error "not implemented"
 end
 
 return Platform
