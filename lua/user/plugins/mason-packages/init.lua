@@ -12,6 +12,7 @@ local packages = {
   "broot",
   "github-cli",
   "lazygit",
+  "luacheck",
 }
 
 -- add custom package name to mason-registry
