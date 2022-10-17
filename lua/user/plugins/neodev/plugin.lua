@@ -1,4 +1,6 @@
 return {
-  config = require "user.plugins.neodev.config",
+  config = function()
+    require "user.plugins.neodev.config"
+  end,
   ft = "lua",
 }

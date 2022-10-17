@@ -1,4 +1,6 @@
 return {
   after = "mason.nvim",
-  config = require "user.plugins.mason-tool-installer.config",
+  config = function()
+    require "user.plugins.mason-tool-installer.config"
+  end,
 }
