@@ -1,11 +1,7 @@
-local status_ok, null_ls = pcall(require, "null-ls")
-if not status_ok then
-  return {}
-end
-
+local null_ls = require "null-ls"
 local h = require "null-ls.helpers"
 
-local terragrunt_hclfmt = {
+return {
   name = "terragrunt_hclfmt",
   method = null_ls.methods.FORMATTING,
   filetypes = { "terragurnt", "hcl" },
@@ -15,11 +11,5 @@ local terragrunt_hclfmt = {
     format = "raw",
     from_temp_file = true,
     to_temp_file = true,
-  },
-}
-
-return {
-  sources = {
-    terragrunt_hclfmt,
   },
 }
