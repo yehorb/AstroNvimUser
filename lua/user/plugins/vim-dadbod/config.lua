@@ -8,3 +8,5 @@ astronvim.which_key_register {
     ["<Leader>bb"] = { ":DB<CR>", "Execute the database query" },
   },
 }
+
+vim.g.db = os.getenv "UPROAD_PROD_REDSHIFT_DSN"
