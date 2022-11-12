@@ -1,6 +1,6 @@
-local Platform = require "user.platform.core"
+local Default = require "user.platform.default"
 
-local Windows = Platform:new()
+local Windows = Default:new()
 
 function Windows.shell()
   return {

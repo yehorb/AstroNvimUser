@@ -21,12 +21,4 @@ function Platform.new(self)
   return setmetatable({}, { __index = self })
 end
 
-function Platform.shell()
-  error "not implemented"
-end
-
-function Platform.fileformat()
-  error "not implemented"
-end
-
 return Platform

@@ -1,16 +1,16 @@
 local Platform = require "user.platform.core"
 
-local Unix = Platform:new()
+local Default = Platform:new()
 
-function Unix.shell()
+function Default.shell()
   return {}
 end
 
-function Unix.fileformat()
+function Default.fileformat()
   return {
     fileformat = "unix",
     fileformats = { "unix" },
   }
 end
 
-return Unix
+return Default
