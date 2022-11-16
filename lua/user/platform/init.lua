@@ -1,10 +1,30 @@
-local Platform = require "user.platform.core"
+local Detect = require "user.platform.detect"
+local Unix = require "user.platform.unix"
+local Windows = require "user.platform.windows"
 
-if Platform.is_win() then
-  if os.getenv "NVIM_USE_CMD" == "1" then
-    return require "user.platform.default"
+local Platform = {}
+
+function Platform.setup(self)
+  local detector = Detect.new()
+  if detector.is_windows() then
+    self.platform_ = Windows.new()
+  else
+    self.platform_ = Unix.new()
   end
-  return require "user.platform.win"
-else
-  return require "user.platform.default"
+  detector = nil
+  return self
 end
+
+function Platform.platform(self)
+  return self.platform_
+end
+
+function Platform.shell(self)
+  return self:platform():shell()
+end
+
+function Platform.fileformat(self)
+  return self:platform():fileformat()
+end
+
+return Platform:setup()
