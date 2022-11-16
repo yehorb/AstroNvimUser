@@ -1,5 +1,5 @@
 local platform = require "user.platform"
-if not platform.is_win() then
+if not platform.is_windows() then
   return {}
 end
 

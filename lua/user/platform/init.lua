@@ -2,29 +2,34 @@ local Detect = require "user.platform.detect"
 local Unix = require "user.platform.unix"
 local Windows = require "user.platform.windows"
 
-local Platform = {}
+local platform = {}
+local detector_, platform_
 
-function Platform.setup(self)
-  local detector = Detect.new()
-  if detector.is_windows() then
-    self.platform_ = Windows.new()
+function platform.setup()
+  detector_ = Detect:new()
+  if detector_:is_windows() then
+    platform_ = Windows:new()
   else
-    self.platform_ = Unix.new()
+    platform_ = Unix:new()
   end
-  detector = nil
-  return self
 end
 
-function Platform.platform(self)
-  return self.platform_
+function platform.shell()
+  return platform_:shell()
 end
 
-function Platform.shell(self)
-  return self:platform():shell()
+function platform.fileformat()
+  return platform_:fileformat()
 end
 
-function Platform.fileformat(self)
-  return self:platform():fileformat()
+function platform.is_unix()
+  return detector_:is_unix()
 end
 
-return Platform:setup()
+function platform.is_windows()
+  return detector_:is_windows()
+end
+
+platform.setup()
+
+return platform

@@ -1,7 +1,7 @@
 local Unix = {}
 
-function Unix.new(self)
-  local state = {}
+function Unix.new(self, state)
+  state = state or {}
   self.__index = self
   setmetatable(state, self)
   return state
