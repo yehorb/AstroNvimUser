@@ -1,7 +1,12 @@
 return {
   ensure_installed = {
+    -- default parsers - better uptate them to be compatible with latest plugin version
+    "c",
+    "help",
+    "lua",
+    "vim",
+    -- user parsers
     "dockerfile",
-    "dot",
     "go",
     "hcl",
     "javascript",
@@ -12,7 +17,6 @@ return {
     "rust",
     "sql",
     "toml",
-    "vim",
     "yaml",
   },
 }
