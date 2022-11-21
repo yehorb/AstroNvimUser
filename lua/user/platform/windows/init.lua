@@ -19,4 +19,8 @@ function Windows.fileformat()
   }
 end
 
+function Windows.home()
+  return os.getenv "USERPROFILE"
+end
+
 return Windows

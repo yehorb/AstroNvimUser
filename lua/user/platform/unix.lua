@@ -18,4 +18,8 @@ function Unix.fileformat()
   }
 end
 
+function Unix.home()
+  return os.getenv "HOME"
+end
+
 return Unix

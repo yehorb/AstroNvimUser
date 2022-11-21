@@ -36,6 +36,10 @@ function platform.is_windows()
   return query_:is_windows()
 end
 
+function platform.home()
+  return platform_:home()
+end
+
 platform.setup()
 
 return platform
