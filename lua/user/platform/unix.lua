@@ -1,10 +1,10 @@
 local Unix = {}
 
-function Unix.new(self, state)
-  state = state or {}
+function Unix.new(self)
+  local unix = {}
   self.__index = self
-  setmetatable(state, self)
-  return state
+  setmetatable(unix, self)
+  return unix
 end
 
 function Unix.shell()

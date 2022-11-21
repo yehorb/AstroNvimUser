@@ -1,14 +1,20 @@
-local Detect = require "user.platform.detect"
+local Query = require "user.platform.query"
 local Unix = require "user.platform.unix"
 local Windows = require "user.platform.windows"
 
 local platform = {}
-local detector_, platform_
+local query_, platform_
 
 function platform.setup()
-  detector_ = Detect:new()
-  if detector_:is_windows() then
-    platform_ = Windows:new()
+  query_ = Query:new()
+  if query_:is_windows() then
+    local shell
+    if os.getenv "NVIM_USE_CMD" == "1" then
+      shell = require "user.platform.windows.shell.cmd"
+    else
+      shell = require "user.platform.windows.shell.powershell"
+    end
+    platform_ = Windows:new(shell)
   else
     platform_ = Unix:new()
   end
@@ -23,11 +29,11 @@ function platform.fileformat()
 end
 
 function platform.is_unix()
-  return detector_:is_unix()
+  return query_:is_unix()
 end
 
 function platform.is_windows()
-  return detector_:is_windows()
+  return query_:is_windows()
 end
 
 platform.setup()

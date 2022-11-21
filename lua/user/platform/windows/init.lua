@@ -1,17 +1,11 @@
 local Windows = {}
 
-function Windows.new(self, state)
-  state = state or self.new_state()
+function Windows.new(self, shell)
+  shell = shell or require "user.platform.windows.shell.cmd"
+  local windows = { shell_ = shell }
   self.__index = self
-  setmetatable(state, self)
-  return state
-end
-
-function Windows.new_state()
-  if os.getenv "NVIM_USE_CMD" == "1" then
-    return { shell_ = require "user.platform.windows.shell.cmd" }
-  end
-  return { shell_ = require "user.platform.windows.shell.powershell" }
+  setmetatable(windows, self)
+  return windows
 end
 
 function Windows.shell(self)
