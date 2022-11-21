@@ -1,7 +1,4 @@
-local status_ok, null_ls = pcall(require, "null-ls")
-if not status_ok then
-  return {}
-end
+local null_ls = require "null-ls"
 
 ---is_in_cwd checks if the given filename is present in the current directory
 ---@param filename string | string[]
@@ -18,15 +15,13 @@ return {
     null_ls.register(source)
   end,
   selene = function()
-    if not is_in_cwd "selene.toml" then
-      return nil
+    if is_in_cwd "selene.toml" then
+      null_ls.register(null_ls.builtins.diagnostics.selene)
     end
-    null_ls.register(null_ls.builtins.diagnostics.selene)
   end,
   luacheck = function()
-    if not is_in_cwd ".luacheckrc" then
-      return nil
+    if is_in_cwd ".luacheckrc" then
+      null_ls.register(null_ls.builtins.diagnostics.luacheck)
     end
-    null_ls.register(null_ls.builtins.diagnostics.luacheck)
   end,
 }

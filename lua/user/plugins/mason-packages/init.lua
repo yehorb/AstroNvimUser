@@ -3,10 +3,7 @@ if not platform.is_windows() then
   return {}
 end
 
-local status_ok, index = pcall(require, "mason-registry.index")
-if not status_ok then
-  return {}
-end
+local index = require "mason-registry.index"
 
 local packages = {
   "broot",
