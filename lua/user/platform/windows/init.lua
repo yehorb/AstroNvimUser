@@ -1,11 +1,10 @@
 local Windows = {}
+Windows.__index = Windows
 
-function Windows.new(self, shell)
-  shell = shell or require "user.platform.windows.shell.cmd"
-  local windows = { shell_ = shell }
-  self.__index = self
-  setmetatable(windows, self)
-  return windows
+function Windows.new(shell)
+  local self = {}
+  self.shell_ = shell or require "user.platform.windows.shell.cmd"
+  return setmetatable(self, Windows)
 end
 
 function Windows.shell(self)

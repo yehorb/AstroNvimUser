@@ -1,11 +1,10 @@
 local Query = {}
+Query.__index = Query
 
-function Query.new(self, platforms)
-  platforms = platforms or self.platforms()
-  local query = { platforms = platforms }
-  self.__index = self
-  setmetatable(query, self)
-  return query
+function Query.new(platforms)
+  local self = {}
+  self.platforms = platforms or Query.platforms()
+  return setmetatable(self, Query)
 end
 
 function Query.platforms()
