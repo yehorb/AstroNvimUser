@@ -1,22 +1,36 @@
+require("nvim-treesitter.install").prefer_git = false
 return {
   ensure_installed = {
-    -- default parsers - better uptate them to be compatible with latest plugin version
-    "c",
-    "help",
-    "lua",
-    "vim",
-    -- user parsers
-    "dockerfile",
+    -- 11 most popular languages
+    "c_sharp",
+    "css",
     "go",
-    "hcl",
+    "html",
+    "java",
     "javascript",
-    "json",
-    "markdown",
+    "perl",
     "python",
-    "query",
     "rust",
+    "scss",
     "sql",
+    -- user parsers
+    "bash",
+    "cmake",
+    "comment",
+    "cpp",
+    "dockerfile",
+    "dot",
+    "hcl",
+    "hjson",
+    "json",
+    "json5",
+    "jsonc",
+    "latex",
+    "make",
+    "markdown",
+    "query",
     "toml",
+    "typescript",
     "yaml",
   },
 }
