@@ -1,6 +1,6 @@
 local platform = require "user.platform"
 
-local rg_options = vim.fn.executable "rg"
+local rg_options = vim.fn.executable "rg" == 1
     and {
       grepformat = vim.opt.grepformat + { "%f:%l:%c:%m" },
       grepprg = "rg --block-buffered --hidden --no-heading --smart-case --vimgrep --",
