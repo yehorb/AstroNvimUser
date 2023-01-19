@@ -1,5 +1,12 @@
 local platform = require "user.platform"
 
+local rg_options = vim.fn.executable "rg"
+    and {
+      grepformat = vim.opt.grepformat + { "%f:%l:%c:%m" },
+      grepprg = "rg --block-buffered --hidden --no-heading --smart-case --vimgrep --",
+    }
+  or {}
+
 return {
   opt = vim.tbl_extend("force", {
     cmdheight = 1,
@@ -13,7 +20,7 @@ return {
     showmode = true,
     showtabline = 1,
     wrap = true,
-  }, platform.shell(), platform.fileformat()),
+  }, platform.shell(), platform.fileformat(), rg_options),
   g = {
     mapleader = "\\",
   },

@@ -10,6 +10,7 @@ local packages = {
   "github-cli",
   "lazygit",
   "luacheck",
+  "ripgrep",
 }
 
 -- add custom package name to mason-registry
