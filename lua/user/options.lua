@@ -9,6 +9,7 @@ local rg_options = vim.fn.executable "rg"
 
 return {
   opt = vim.tbl_extend("force", {
+    clipboard = "",
     cmdheight = 1,
     fileencoding = "utf-8",
     linebreak = true,
