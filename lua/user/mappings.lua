@@ -6,6 +6,8 @@ return {
   n = {
     ["<C-b>"] = ":buffer ",
     ["<C-p>"] = ":find ",
+    ["\\"] = false,
+    ["|"] = false,
   },
   v = {
     ["p"] = '"_dP',
