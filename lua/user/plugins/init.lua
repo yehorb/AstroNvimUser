@@ -13,6 +13,7 @@ local plugins = {
 
   ["folke/neodev.nvim"] = require "user.plugins.neodev.plugin",
   ["simrat39/rust-tools.nvim"] = require "user.plugins.rust-tools.plugin",
+  ["j-hui/fidget.nvim"] = require "user.plugins.fidget.plugin",
   { "arcticicestudio/nord-vim" },
   { "editorconfig/editorconfig-vim" },
 }
