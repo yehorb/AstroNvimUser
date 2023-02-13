@@ -8,6 +8,7 @@ return {
     ["<C-p>"] = ":find ",
     ["\\"] = false,
     ["|"] = false,
+    ["vv"] = "<C-v>",
   },
   v = {
     ["p"] = '"_dP',
