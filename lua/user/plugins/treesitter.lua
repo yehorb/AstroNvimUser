@@ -29,6 +29,7 @@ return {
     "make",
     "markdown",
     "query",
+    "terraform",
     "toml",
     "typescript",
     "yaml",
