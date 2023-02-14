@@ -1,4 +1,5 @@
 local platform = require "user.platform"
+local netrw = require "user.options.netrw"
 
 local rg_options = vim.fn.executable "rg" == 1
     and {
@@ -22,7 +23,7 @@ return {
     showtabline = 1,
     wrap = true,
   }, platform.shell(), platform.fileformat(), rg_options),
-  g = {
+  g = vim.tbl_extend("force", {
     mapleader = "\\",
-  },
+  }, netrw),
 }
