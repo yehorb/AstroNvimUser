@@ -15,7 +15,7 @@ local function quickfix_mapping(args)
   vim.keymap.set("n", "q", "<Cmd>quit<CR>", options)
 end
 
-vim.api.nvim_create_autocmd("BufReadPost", {
+vim.api.nvim_create_autocmd("FileType", {
   group = "user",
   pattern = "quickfix",
   desc = "jk in quickfix list should jump to location in buffer.",
