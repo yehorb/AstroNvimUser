@@ -3,6 +3,7 @@ local disable = require "user.plugins.disable"
 local plugins = {
   -- tpope
   ["tpope/vim-dadbod"] = require "user.plugins.vim-dadbod.plugin",
+  { "tpope/vim-fugitive" },
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
   { "tpope/vim-vinegar" },
