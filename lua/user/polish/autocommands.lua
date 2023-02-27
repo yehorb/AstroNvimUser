@@ -17,7 +17,7 @@ end
 
 vim.api.nvim_create_autocmd("FileType", {
   group = "user",
-  pattern = "quickfix",
+  pattern = "qf",
   desc = "jk in quickfix list should jump to location in buffer.",
   callback = quickfix_mapping,
 })
