@@ -17,6 +17,9 @@ local plugins = {
   ["simrat39/rust-tools.nvim"] = require "user.plugins.rust-tools.plugin",
   { "arcticicestudio/nord-vim" },
   { "editorconfig/editorconfig-vim" },
+
+  -- local
+  ["C:\\Users\\yehorb\\projects\\nvim\\broot.nvim"] = require "user.plugins.broot.plugin",
 }
 
 return vim.tbl_extend("error", plugins, disable)
