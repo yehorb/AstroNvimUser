@@ -15,7 +15,6 @@ local sources = {
       get_bufnrs = get_bufnrs,
     },
   },
-  { name = "nvim_lsp_signature_help" },
 }
 
 local function complete_or(options, key)

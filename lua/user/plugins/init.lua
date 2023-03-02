@@ -12,8 +12,8 @@ local plugins = {
   { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
   { "nvim-treesitter/playground", after = "nvim-treesitter" },
 
-  -- nvim-cmp
-  { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
+  -- lsp
+  ["ray-x/lsp_signature.nvim"] = require "user.plugins.lsp-signature.plugin",
 
   ["folke/neodev.nvim"] = require "user.plugins.neodev.plugin",
   ["j-hui/fidget.nvim"] = require "user.plugins.fidget.plugin",
