@@ -25,5 +25,6 @@ return {
   }, platform.shell(), platform.fileformat(), rg_options),
   g = vim.tbl_extend("force", {
     mapleader = "\\",
+    pyindent_disable_parentheses_indenting = true,
   }, netrw),
 }
