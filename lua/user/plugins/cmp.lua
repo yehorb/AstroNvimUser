@@ -17,20 +17,16 @@ local sources = {
   },
 }
 
-local function complete_or(options, key)
-  local existing_action = options.mapping[key]
-  options.mapping[key] = function(_)
+return function(options)
+  options.soruces = vim.list_extend(options.sources or {}, sources, 1, #sources)
+
+  options.mapping["<C-x>"] = function(fallback)
     if not cmp.visible() then
       cmp.complete()
     else
-      existing_action()
+      fallback()
     end
   end
-end
 
-return function(options)
-  options.soruces = vim.list_extend(options.sources or {}, sources, 1, #sources)
-  complete_or(options, "<C-n>")
-  complete_or(options, "<C-p>")
   return options
 end
