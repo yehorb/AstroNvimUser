@@ -21,6 +21,8 @@ return {
     showbreak = ">> ",
     showmode = true,
     showtabline = 1,
+    splitbelow = false,
+    splitright = false,
     wrap = true,
   }, platform.shell(), platform.fileformat(), rg_options),
   g = vim.tbl_extend("force", {
