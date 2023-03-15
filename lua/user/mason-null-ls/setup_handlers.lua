@@ -8,12 +8,6 @@ local function is_in_cwd(filename)
 end
 
 return {
-  mypy = function()
-    local source = null_ls.builtins.diagnostics.mypy.with {
-      extra_args = { "--python-executable", vim.fn.exepath "python" },
-    }
-    null_ls.register(source)
-  end,
   selene = function()
     if is_in_cwd "selene.toml" then
       null_ls.register(null_ls.builtins.diagnostics.selene)
