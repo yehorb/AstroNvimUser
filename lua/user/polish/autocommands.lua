@@ -9,8 +9,8 @@ vim.api.nvim_create_autocmd("BufNewFile,BufRead", {
 
 local function quickfix_mapping(args)
   local options = { buffer = args.buf }
-  vim.keymap.set("n", "j", "j<CR><Cmd>copen<CR>", options)
-  vim.keymap.set("n", "k", "k<CR><Cmd>copen<CR>", options)
+  vim.keymap.set("n", "j", "j<CR>zz<Cmd>wincmd w<CR>", options)
+  vim.keymap.set("n", "k", "k<CR>zz<Cmd>wincmd w<CR>", options)
   vim.keymap.set("n", "<CR>", "<CR><Cmd>cclose<CR>", options)
   vim.keymap.set("n", "q", "<Cmd>quit<CR>", options)
 end
