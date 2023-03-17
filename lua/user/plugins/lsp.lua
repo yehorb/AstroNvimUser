@@ -1,5 +1,12 @@
 return {
   {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      { "j-hui/fidget.nvim", config = true },
+      { "simrat39/rust-tools.nvim", ft = "rust" },
+    },
+  },
+  {
     "williamboman/mason-lspconfig.nvim",
     opts = {
       automatic_installation = false,
@@ -28,6 +35,7 @@ return {
     opts = {
       automatic_installation = false,
       ensure_installed = {
+        "ruff_lsp",
         "selene",
         "stylua",
       },
