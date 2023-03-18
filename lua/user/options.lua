@@ -1,19 +1,21 @@
-local platform = require "user.platform"
-local netrw = require "user.options.netrw"
+local powershell = {
+  shell = vim.fn.executable "pwsh" and "pwsh" or "powershell",
+  shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+  shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+  shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+  shellquote = "",
+  shellxquote = "",
+}
 
-local rg_options = vim.fn.executable "rg" == 1
-    and {
-      grepformat = vim.opt.grepformat + { "%f:%l:%c:%m" },
-      grepprg = "rg --block-buffered --hidden --no-heading --smart-case --vimgrep",
-    }
-  or {}
+local unix_fileformat = {
+  fileformat = "unix",
+  fileformats = { "unix", "dos" },
+}
 
 return {
-  opt = vim.tbl_extend("force", {
+  opt = vim.tbl_extend("force", powershell, unix_fileformat, {
     clipboard = "",
     cmdheight = 1,
-    fileencoding = "utf-8",
-    linebreak = true,
     list = true,
     listchars = { eol = "¶", tab = "→·", trail = "·", nbsp = "+" },
     path = vim.opt.path + { "**" },
@@ -24,9 +26,5 @@ return {
     splitbelow = false,
     splitright = false,
     wrap = true,
-  }, platform.shell(), platform.fileformat(), rg_options),
-  g = vim.tbl_extend("force", {
-    mapleader = "\\",
-    pyindent_disable_parentheses_indenting = true,
-  }, netrw),
+  }),
 }

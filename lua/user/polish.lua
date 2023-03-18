@@ -1,10 +1,7 @@
 return function()
-  require "user.polish.autocommands"
+  require "user.autocommands"
 
-  -- enable netrw
-  -- using astronvim.vim_opts { g = { ... } } does not work
-  -- ["key"] = nil gets removed by lua parser...
-  vim.g.loaded_netrwFileHandlers = nil
-  vim.g.loaded_netrwPlugin = nil
-  vim.g.loaded_netrwSettngs = nil
+  if vim.fn.executable "rg" == 1 then
+    require "user.tools.ripgrep"
+  end
 end

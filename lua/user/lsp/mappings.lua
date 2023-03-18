@@ -1,16 +1,9 @@
 return {
   n = {
-    ["<C-]>"] = {
-      function()
-        vim.lsp.buf.definition()
-      end,
-      desc = "Show the definition of current symbol",
-    },
-    ["gh"] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-      desc = "Hover symbol details",
-    },
+    ["<C-]>"] = { vim.lsp.buf.definition, desc = "Show the definition of current symbol" },
+    ["gh"] = { vim.lsp.buf.hover, desc = "Hover symbol details" },
+  },
+  i = {
+    ["<C-_>"] = { vim.lsp.buf.signature_help, desc = "Show signature help" },
   },
 }

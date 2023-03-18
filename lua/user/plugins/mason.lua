@@ -1,8 +1,11 @@
-local path = require "mason-core.path"
-local platform = require "user.platform"
-
-require "user.plugins.mason-packages"
-
 return {
-  install_root_dir = path.concat { platform.home(), "Tools", "mason" },
+  "williamboman/mason.nvim",
+  opts = function(_, opts)
+    local path = require "mason-core.path"
+    opts.install_root_dir = path.concat { os.getenv "USERPROFILE", "Tools", "mason" }
+  end,
+  config = function(plugin, opts)
+    require "plugins.configs.mason"(plugin, opts)
+    require "user.tools.mason-packages"
+  end,
 }
