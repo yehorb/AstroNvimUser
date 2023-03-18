@@ -1,3 +1,0 @@
-return {
-  "ruff_lsp",
-}
