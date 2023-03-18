@@ -1,23 +1,33 @@
+local function reveal_tree()
+  if vim.bo.filetype ~= "neo-tree" then
+    vim.cmd.Neotree { "position=current", "reveal" }
+  end
+end
+
+local function reveal_parent(state)
+  require("neo-tree.ui.renderer").focus_node(state, state.tree:get_node():get_parent_id())
+end
+
+local function edit_neo_tree_alternate_file()
+  local alternate_nr = vim.w.neo_tree_alternate_nr or vim.fn.bufnr "#" ---@diagnostic disable-line: param-type-mismatch
+  vim.w.neo_tree_alternate_nr = nil
+  vim.cmd.buffer(alternate_nr)
+end
+
 return {
   "nvim-neo-tree/neo-tree.nvim",
   keys = {
     { "<leader>e", false },
     { "<leader>o", false },
-    {
-      "-",
-      function()
-        if vim.bo.filetype ~= "neo-tree" then
-          vim.cmd.Neotree { "position=current", "reveal" }
-        end
-      end,
-    },
+    { "-", reveal_tree },
+    { "<C-^>", edit_neo_tree_alternate_file },
   },
   opts = {
     filesystem = {
       hijack_netrw_behavior = "open_current",
       window = {
         mappings = {
-          ["-"] = "parent_or_close",
+          ["-"] = reveal_parent,
         },
       },
     },
@@ -30,14 +40,6 @@ return {
       local pattern = "neo%-tree [^ ]+ %[1%d%d%d%]"
       if string.match(data.file, pattern) then
         vim.w.neo_tree_alternate_nr = vim.fn.bufnr "#" ---@diagnostic disable-line: param-type-mismatch
-        vim.keymap.set("n", "<C-^>", function()
-          local alternate_nr = vim.fn.bufnr "#" ---@diagnostic disable-line: param-type-mismatch
-          if vim.w.neo_tree_alternate_nr ~= nil then
-            alternate_nr = vim.w.neo_tree_alternate_nr
-          end
-          vim.w.neo_tree_alternate_nr = nil
-          vim.cmd.buffer(alternate_nr)
-        end)
       end
     end
     vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
