@@ -34,8 +34,6 @@ return {
   },
   config = function(_, opts)
     require("neo-tree").setup(opts)
-    -- removes the "Window settings restored" message
-    vim.api.nvim_del_augroup_by_name "NeoTree_BufLeave"
     local bufenter = function(data)
       local pattern = "neo%-tree [^ ]+ %[1%d%d%d%]"
       if string.match(data.file, pattern) then
