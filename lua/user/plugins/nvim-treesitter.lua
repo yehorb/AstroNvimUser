@@ -6,7 +6,7 @@ return {
     { "nvim-treesitter/playground" },
   },
   opts = function(_, opts)
-    opts.ensure_installed = { "c", "lua", "vim", "help" }
+    opts.ensure_installed = { "c", "lua", "vim", "vimdoc", "query" }
     require("nvim-treesitter.install").prefer_git = false
   end,
   config = function(plugin, opts)
