@@ -26,6 +26,7 @@ return {
         null_ls.builtins.diagnostics.mypy,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
+        require "user.plugins.null-ls.sources.ruff",
         require "user.plugins.null-ls.sources.terragrunt_hclfmt",
       }
     end,
