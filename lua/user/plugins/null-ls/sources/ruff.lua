@@ -32,6 +32,8 @@ return {
         "--exit-zero",
         "--format",
         "json",
+        "--exclude",
+        ".null-ls*",
         params.root,
       }
     end,
