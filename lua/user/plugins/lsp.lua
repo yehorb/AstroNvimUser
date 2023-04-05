@@ -32,20 +32,16 @@ return {
   },
   {
     "jay-babu/mason-null-ls.nvim",
-    opts = {
-      automatic_installation = false,
-      ensure_installed = {
+    opts = function(_, opts)
+      local fs = require "user.services.fs"
+      local null_ls = require "null-ls"
+      opts.automatic_installation = false
+      opts.ensure_installed = {
         "ruff_lsp",
         "selene",
         "stylua",
-      },
-    },
-    config = function(_, opts)
-      local fs = require "user.services.fs"
-      local mason_null_ls = require "mason-null-ls"
-      local null_ls = require "null-ls"
-      mason_null_ls.setup(opts)
-      mason_null_ls.setup_handlers {
+      }
+      opts.handlers = {
         selene = function()
           if fs.is_in_cwd "selene.toml" then
             null_ls.register(null_ls.builtins.diagnostics.selene)
