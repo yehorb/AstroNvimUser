@@ -34,7 +34,7 @@ return {
   {
     "jay-babu/mason-null-ls.nvim",
     opts = function(_, opts)
-      local fs = require "user.services.fs"
+      local fs = require "user.std.fs"
       local null_ls = require "null-ls"
       opts.automatic_installation = false
       opts.ensure_installed = {
