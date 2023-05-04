@@ -4,10 +4,12 @@ return {
   dependencies = {
     { "nvim-treesitter/nvim-treesitter-textobjects" },
     { "nvim-treesitter/playground" },
+    { "https://gitlab.com/HiPhish/nvim-ts-rainbow2" },
   },
   opts = function(_, opts)
     opts.ensure_installed = { "c", "lua", "vim", "vimdoc", "query" }
     require("nvim-treesitter.install").prefer_git = false
+    opts.rainbow = { enable = true }
   end,
   config = function(plugin, opts)
     require "plugins.configs.nvim-treesitter"(plugin, opts)
