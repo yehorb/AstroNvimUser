@@ -4,4 +4,6 @@ return function()
   if vim.fn.executable "rg" == 1 then
     require "user.tools.ripgrep"
   end
+
+  vim.opt.rtp:append(string.format("%s\\after", astronvim.install.config))
 end
