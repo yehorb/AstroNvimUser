@@ -55,7 +55,7 @@ for id, node, metadata in injections:iter_captures(root, python_source, 0, -1) d
   print_capture(id, node, metadata)
 end
 
-print "----- iter_captures -----"
+print "----- iter_matches -----"
 for _, match, metadata in injections:iter_matches(root, python_source, 0, -1) do
   for id, node in pairs(match) do
     print_capture(id, node, metadata)
