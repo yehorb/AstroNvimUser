@@ -1,4 +1,4 @@
----get_root returns python tree root for a given buffer
+--- get_root returns python tree root for a given buffer
 ---@param bufnr integer
 ---@return TSNode
 local function get_root(bufnr)
@@ -7,26 +7,23 @@ local function get_root(bufnr)
   return tree:root()
 end
 
----format_sql_injections will format sql injections in a python file using
----sqlfluff
+---@class Change
+---@field start_row integer
+---@field end_row integer
+---@field content string[]
+
+--- format_sql_injections will format sql injections in a python file using sqlfluff
 ---@param bufnr integer | nil
 local function format_sql_injections(bufnr)
-  local ok, job = pcall(require, "plenary.job")
-  if not ok then
-    return vim.schedule(function()
-      vim.notify(
-        "format_sql_injections requires plenary.nvim",
-        vim.log.levels.ERROR,
-        { title = "python#format_sql_injections" }
-      )
-    end)
-  end
-
   bufnr = bufnr or vim.api.nvim_get_current_buf()
 
   if vim.bo[bufnr].filetype ~= "python" then
     return vim.schedule(function()
-      vim.notify("can only be used in Python files", vim.log.levels.ERROR, { title = "python#format_sql_injections" })
+      vim.notify(
+        "python#format_sql_injections can only be used in Python files",
+        vim.log.levels.ERROR,
+        { title = "python#format_sql_injections" }
+      )
     end)
   end
 
@@ -41,34 +38,77 @@ local function format_sql_injections(bufnr)
     end)
   end
 
+  local ok, job = pcall(require, "plenary.job")
+  if not ok then
+    return vim.schedule(function()
+      vim.notify(
+        "python#format_sql_injections requires plenary.nvim",
+        vim.log.levels.ERROR,
+        { title = "python#format_sql_injections" }
+      )
+    end)
+  end
+
   local root = get_root(bufnr)
 
+  ---@type Change[]
   local changes = {}
-  for id, node in injections:iter_captures(root, bufnr, 0, -1) do
-    if injections.captures[id] == "injection.content" then
+  ---@type Diagnostic[]
+  local diagnostics = {}
+
+  for id, node, metadata in injections:iter_captures(root, bufnr, 0, -1) do
+    if injections.captures[id] == "injection.content" and metadata["injection.language"] == "sql" then
       local range = { node:range() }
-      local lines = vim.split(vim.treesitter.get_node_text(node, bufnr), "\n")
-      local sql_injection = table.concat(lines, "\n")
-      local task = job:new {
+      local sql = vim.treesitter.get_node_text(node, bufnr)
+
+      local sqlfluff = job:new {
         command = "sqlfluff.exe",
         args = {
           "fix",
           "--nocolor",
           "-",
         },
-        writer = { sql_injection },
+        writer = { sql },
       }
-      local formatted = task:sync()
-      table.insert(changes, 1, {
-        start_pos = range[1] + 1,
-        end_pos = range[3],
-        change = formatted,
-      })
+      ---@type string[], integer
+      local stdout, code = sqlfluff:sync()
+      ---@type string[]
+      local stderr = sqlfluff:stderr_result()
+
+      ---@type Change
+      local change = {
+        start_row = range[1] + 1,
+        end_row = range[3],
+        content = stdout,
+      }
+      table.insert(changes, 1, change)
+
+      if code ~= 0 then
+        ---@type Diagnostic
+        local diagnostic = {
+          buffer = bufnr,
+          lnum = range[1],
+          end_lnum = range[3],
+          col = range[2],
+          end_col = range[4],
+          severity = vim.diagnostic.severity.ERROR,
+          message = table.concat(stderr, "\n") .. table.concat(stdout, "\n"),
+          source = "sqlfluff",
+          code = tostring(code),
+        }
+        table.insert(diagnostics, 1, diagnostic)
+      end
     end
   end
 
-  for _, change in ipairs(changes) do
-    vim.api.nvim_buf_set_lines(bufnr, change.start_pos, change.end_pos, false, change.change)
+  if #changes ~= 0 then
+    for _, change in ipairs(changes) do
+      vim.api.nvim_buf_set_lines(bufnr, change.start_row, change.end_row, false, change.content)
+    end
+  end
+  if #diagnostics ~= 0 then
+    local ns = vim.api.nvim_create_namespace "sqlfluff"
+    vim.diagnostic.set(ns, bufnr, diagnostics, {})
   end
 end
 
