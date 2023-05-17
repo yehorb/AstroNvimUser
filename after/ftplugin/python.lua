@@ -49,12 +49,11 @@ local function format_sql_injections(bufnr)
       local range = { node:range() }
       local lines = vim.split(vim.treesitter.get_node_text(node, bufnr), "\n")
       local sql_injection = table.concat(lines, "\n")
-      local config = vim.api.nvim_get_runtime_file("ftplugin/config/sqlfluff.cfg", false)[1]
       local task = job:new {
         command = "sqlfluff.exe",
         args = {
           "fix",
-          string.format("--config=%s", config),
+          "--nocolor",
           "-",
         },
         writer = { sql_injection },
