@@ -25,6 +25,7 @@ return {
         null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.stylua,
         null_ls.builtins.diagnostics.mypy.with {
           extra_args = { string.format("--python-executable=%s", vim.fn.exepath "python") },
         },
@@ -51,6 +52,7 @@ return {
         "ruff_lsp",
       }
       opts.handlers = {
+        function() end,
         selene = function()
           if fs.is_in_cwd "selene.toml" then
             null_ls.register(null_ls.builtins.diagnostics.selene)
