@@ -23,9 +23,11 @@ return {
       local null_ls = require "null-ls"
       opts.sources = {
         null_ls.builtins.diagnostics.flake8,
-        null_ls.builtins.diagnostics.mypy,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
+        null_ls.builtins.diagnostics.mypy.with {
+          extra_args = { string.format("--python-executable=%s", vim.fn.exepath "python") },
+        },
         require "user.plugins.null-ls.sources.ruff",
         require "user.plugins.null-ls.sources.terragrunt_hclfmt",
       }
