@@ -58,6 +58,11 @@ return {
             null_ls.register(null_ls.builtins.diagnostics.selene)
           end
         end,
+        sqlfluff = function()
+          if fs.is_in_cwd ".sqlfluff" then
+            null_ls.register(null_ls.builtins.diagnostics.sqlfluff)
+          end
+        end,
       }
     end,
   },
