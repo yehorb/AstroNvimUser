@@ -40,9 +40,15 @@ return {
       local null_ls = require "null-ls"
       opts.automatic_installation = false
       opts.ensure_installed = {
-        "ruff_lsp",
+        -- lua
         "selene",
         "stylua",
+        -- python
+        "black",
+        "flake8",
+        "isort",
+        "mypy",
+        "ruff_lsp",
       }
       opts.handlers = {
         selene = function()
