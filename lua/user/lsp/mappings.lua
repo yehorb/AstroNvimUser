@@ -14,6 +14,7 @@ return {
       end,
       desc = "Hover diagnostics",
     },
+    ["gT"] = false,
   },
   i = {
     ["<C-_>"] = { vim.lsp.buf.signature_help, desc = "Show signature help" },
