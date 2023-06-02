@@ -20,6 +20,7 @@ return {
   {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function(_, opts)
+      local fs = require "user.std.fs"
       local null_ls = require "null-ls"
       opts.sources = {
         null_ls.builtins.diagnostics.flake8,
@@ -32,13 +33,17 @@ return {
         require "user.plugins.null-ls.sources.ruff",
         require "user.plugins.null-ls.sources.terragrunt_hclfmt",
       }
+      if fs.is_in_cwd "selene.toml" then
+        table.insert(opts.sources, null_ls.builtins.diagnostics.selene)
+      end
+      if fs.is_in_cwd ".sqlfluff" then
+        table.insert(opts.sources, null_ls.builtins.diagnostics.sqlfluff)
+      end
     end,
   },
   {
     "jay-babu/mason-null-ls.nvim",
     opts = function(_, opts)
-      local fs = require "user.std.fs"
-      local null_ls = require "null-ls"
       opts.automatic_installation = false
       opts.ensure_installed = {
         -- lua
@@ -51,19 +56,7 @@ return {
         "mypy",
         "ruff_lsp",
       }
-      opts.handlers = {
-        function() end,
-        selene = function()
-          if fs.is_in_cwd "selene.toml" then
-            null_ls.register(null_ls.builtins.diagnostics.selene)
-          end
-        end,
-        sqlfluff = function()
-          if fs.is_in_cwd ".sqlfluff" then
-            null_ls.register(null_ls.builtins.diagnostics.sqlfluff)
-          end
-        end,
-      }
+      opts.handlers = { function() end }
     end,
   },
 }
