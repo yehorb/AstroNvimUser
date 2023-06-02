@@ -6,4 +6,10 @@ return function()
   end
 
   vim.opt.rtp:append(string.format("%s\\after", astronvim.install.config))
+
+  vim.filetype.add {
+    filename = {
+      [".sqlfluff"] = "toml",
+    },
+  }
 end
