@@ -2,7 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "j-hui/fidget.nvim", config = true },
+      { "j-hui/fidget.nvim", config = true, branch = "legacy" },
       { "simrat39/rust-tools.nvim", ft = "rust" },
     },
   },
