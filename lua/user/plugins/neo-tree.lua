@@ -42,6 +42,12 @@ return {
           vim.w.neo_tree_alternate_nr = vim.fn.bufnr "#" ---@diagnostic disable-line: param-type-mismatch
         end,
       },
+      {
+        event = "file_opened",
+        handler = function(_)
+          vim.cmd "file! %:."
+        end,
+      },
     },
   },
 }
