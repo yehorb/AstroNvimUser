@@ -35,19 +35,13 @@ return {
         },
       },
     },
+    event_handlers = {
+      {
+        event = "neo_tree_buffer_enter",
+        handler = function()
+          vim.w.neo_tree_alternate_nr = vim.fn.bufnr "#" ---@diagnostic disable-line: param-type-mismatch
+        end,
+      },
+    },
   },
-  config = function(_, opts)
-    require("neo-tree").setup(opts)
-    local bufenter = function(data)
-      local pattern = "neo%-tree [^ ]+ %[1%d%d%d%]"
-      if string.match(data.file, pattern) then
-        vim.w.neo_tree_alternate_nr = vim.fn.bufnr "#" ---@diagnostic disable-line: param-type-mismatch
-      end
-    end
-    vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-      group = vim.api.nvim_create_augroup("NeoTree_BufEnter", { clear = true }),
-      pattern = "neo-tree *",
-      callback = bufenter,
-    })
-  end,
 }
