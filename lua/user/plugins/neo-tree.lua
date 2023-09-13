@@ -45,7 +45,7 @@ return {
       {
         event = "file_opened",
         handler = function(_)
-          vim.cmd "file! %:."
+          pcall(vim.fn.chdir, vim.fn.getcwd())
         end,
       },
     },
