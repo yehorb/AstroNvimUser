@@ -53,7 +53,7 @@ return {
           col = json_diagnostic["location"]["column"],
           end_row = json_diagnostic["end_location"]["row"],
           end_col = json_diagnostic["end_location"]["column"],
-          source = "Ruff",
+          source = "Ruff (null-ls)",
           code = json_diagnostic["code"],
           filename = json_diagnostic["filename"],
           bufnr = nil,
