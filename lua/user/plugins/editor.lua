@@ -1,5 +1,4 @@
 return {
-  { "editorconfig/editorconfig-vim", event = "User AstroFile" },
   {
     "numToStr/Comment.nvim",
     keys = {
