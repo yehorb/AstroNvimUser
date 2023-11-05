@@ -1,1 +1,4 @@
-return { "rust_analyzer" }
+return {
+  "clangd",
+  "rust_analyzer",
+}

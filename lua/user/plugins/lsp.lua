@@ -4,6 +4,7 @@ return {
     dependencies = {
       { "j-hui/fidget.nvim", config = true, branch = "legacy" },
       { "simrat39/rust-tools.nvim", ft = "rust" },
+      { "p00f/clangd_extensions.nvim", ft = "cpp" },
     },
   },
   {
