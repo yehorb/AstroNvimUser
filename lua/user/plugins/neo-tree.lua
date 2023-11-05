@@ -49,5 +49,6 @@ return {
         end,
       },
     },
+    use_libuv_file_watcher = false,
   },
 }
