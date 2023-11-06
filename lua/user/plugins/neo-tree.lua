@@ -34,6 +34,7 @@ return {
           ["/"] = false,
         },
       },
+      use_libuv_file_watcher = false,
     },
     event_handlers = {
       {
@@ -49,6 +50,5 @@ return {
         end,
       },
     },
-    use_libuv_file_watcher = false,
   },
 }
