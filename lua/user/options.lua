@@ -16,6 +16,7 @@ return {
   opt = vim.tbl_extend("force", powershell, unix_fileformat, {
     clipboard = "",
     cmdheight = 1,
+    foldcolumn = "0",
     list = true,
     listchars = { eol = "¶", tab = "→·", trail = "·", nbsp = "+" },
     path = vim.opt.path + { "**" },
