@@ -3,7 +3,7 @@ return {
   { import = "astrocommunity.colorscheme.nord-nvim" },
   {
     "shaunsingh/nord.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false,
     priority = 1000,
     config = function(_, _)
@@ -19,7 +19,7 @@ return {
   { import = "astrocommunity.colorscheme.nordic-nvim" },
   {
     "AlexvZyl/nordic.nvim",
-    enabled = false,
+    enabled = true,
     lazy = false,
     priority = 1000,
   },
