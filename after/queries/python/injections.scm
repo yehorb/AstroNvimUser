@@ -1,6 +1,12 @@
 ; extends
 (assignment
-  left: (identifier) @_id
+  left: (identifier) @name
   right: (string (string_content) @injection.content)
-  (#contains? @_id "sql")
+  (#contains? @name "sql")
   (#set! injection.language "sql"))
+
+(assignment
+  left: (identifier) @name
+  right: (string (string_content) @injection.content)
+  (#contains? @name "yaml")
+  (#set! injection.language "yaml"))
