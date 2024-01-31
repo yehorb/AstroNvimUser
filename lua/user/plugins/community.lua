@@ -22,5 +22,14 @@ return {
     enabled = true,
     lazy = false,
     priority = 1000,
+    config = function(_, opts)
+      local C = require "nordic.colors"
+      opts.override = {
+        NeoTreeGitModified = { fg = C.orange.base },
+        NeoTreeGitUntracked = { fg = C.orange.dim, italic = true },
+      }
+      require("nordic").setup(opts)
+      require("nordic").load()
+    end,
   },
 }
