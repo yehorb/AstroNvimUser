@@ -1,1 +1,4 @@
-std="astronvim"
+std = "astronvim"
+
+[lints]
+mixed_table = "allow"
